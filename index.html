@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jhanela Carhuaz Fuster · Portafolio</title>
+  <meta name="description" content="Economía aplicada, datos e IA para entender la pobreza en el Perú. Research Intern en IPA.">
+  <meta property="og:title" content="Jhanela Carhuaz Fuster">
+  <meta property="og:description" content="Economía aplicada, datos e IA para entender la pobreza en el Perú.">
+  <meta property="og:image" content="https://jhane080.github.io/images/foto.jpg">
+  <link rel="icon" href="images/foto.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <script>
+    // Idioma y tema antes de pintar, para que no parpadee
+    (function () {
+      var idioma = null, tema = null;
+      try { idioma = localStorage.getItem("idioma"); tema = localStorage.getItem("tema"); } catch (e) {}
+      if (!idioma) idioma = (navigator.language || "es").toLowerCase().indexOf("es") === 0 ? "es" : "en";
+      document.documentElement.lang = idioma;
+      if (tema) document.documentElement.setAttribute("data-theme", tema);
+    })();
+  </script>
+  <style>
+    :root {
+      --navy: #2b4468;
+      --navy-2: #4b6b92;
+      --ambar: #f5c98a;
+      --acento: #a5623d;
+      --fondo: #f7f5f1;
+      --fondo-2: #ffffff;
+      --texto: #2a3242;
+      --suave: #5f6979;
+      --borde: #e9e4dc;
+      --sombra: 0 1px 2px rgba(43, 68, 104, .05), 0 8px 24px rgba(43, 68, 104, .07);
+      --radio: 14px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --acento: #f0c78f;
+        --fondo: #1a2436;
+        --fondo-2: #222e43;
+        --texto: #e7ecf4;
+        --suave: #a3aec2;
+        --borde: #33425c;
+        --sombra: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .25);
+      }
+    }
+    :root[data-theme="dark"] {
+      --acento: #f0c78f;
+      --fondo: #1a2436;
+      --fondo-2: #222e43;
+      --texto: #e7ecf4;
+      --suave: #a3aec2;
+      --borde: #33425c;
+      --sombra: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .25);
+    }
+
+    /* Un solo HTML con los dos idiomas: se esconde el que no toca */
+    html[lang="es"] .en, html[lang="en"] .es { display: none !important; }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--fondo);
+      color: var(--texto);
+      font: 400 17px/1.65 "Inter", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: var(--acento); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 700; line-height: 1.15; margin: 0; }
+    .contenedor { width: min(1080px, 100% - 32px); margin-inline: auto; }
+    .etiqueta {
+      font: 500 12.5px/1 "JetBrains Mono", monospace;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--acento);
+    }
+
+    /* Barra superior */
+    .barra {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(43, 68, 104, .94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+    }
+    .barra .contenedor { display: flex; align-items: center; gap: 20px; height: 60px; }
+    .monograma {
+      font: 700 20px/1 "Fraunces", serif; color: #fff; text-decoration: none; letter-spacing: .02em;
+    }
+    .monograma span { color: var(--ambar); }
+    .menu { display: flex; gap: 22px; margin-left: auto; }
+    .menu a { color: #cdd6e5; text-decoration: none; font-size: 14.5px; font-weight: 500; }
+    .menu a:hover { color: #fff; }
+    .controles { display: flex; gap: 8px; align-items: center; }
+    .idiomas { display: flex; border: 1px solid rgba(255, 255, 255, .25); border-radius: 999px; overflow: hidden; }
+    .idiomas button, .tema {
+      background: transparent; color: #cdd6e5; border: 0; cursor: pointer;
+      font: 600 12.5px/1 "Inter", sans-serif; padding: 8px 12px;
+    }
+    html[lang="es"] .idiomas [data-idioma="es"], html[lang="en"] .idiomas [data-idioma="en"] {
+      background: #fff; color: var(--navy);
+    }
+    .tema { border: 1px solid rgba(255, 255, 255, .25); border-radius: 999px; padding: 7px 10px; font-size: 15px; }
+
+    /* Portada */
+    .portada {
+      background:
+        radial-gradient(900px 420px at 85% -10%, rgba(245, 201, 138, .22), transparent 60%),
+        linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
+      color: #fff;
+      padding: 72px 0 84px;
+    }
+    .portada .contenedor { display: grid; grid-template-columns: 1fr 300px; gap: 56px; align-items: center; }
+    .portada .etiqueta { color: var(--ambar); }
+    .portada h1 { font-size: clamp(40px, 6vw, 64px); margin: 16px 0 18px; }
+    .lema { font: 500 clamp(22px, 2.6vw, 28px)/1.35 "Fraunces", serif; color: #e9eef7; margin: 0 0 18px; max-width: 30ch; }
+    .lema em { color: var(--ambar); }
+    .portada p.intro { color: #c3cddd; max-width: 56ch; margin: 0 0 28px; }
+    .botones { display: flex; flex-wrap: wrap; gap: 12px; }
+    .boton {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 20px; border-radius: 999px; font-weight: 600; font-size: 15px; text-decoration: none;
+    }
+    .boton.principal { background: var(--ambar); color: var(--navy); }
+    .boton.secundario { border: 1.5px solid rgba(255, 255, 255, .5); color: #fff; }
+    .boton:hover { transform: translateY(-1px); }
+    .redes { display: flex; gap: 18px; margin-top: 26px; flex-wrap: wrap; }
+    .redes a { color: #cdd6e5; text-decoration: none; font-size: 14.5px; display: inline-flex; gap: 7px; align-items: center; }
+    .redes a:hover { color: #fff; }
+    .redes svg { width: 17px; height: 17px; fill: currentColor; }
+    .foto {
+      width: 300px; height: 300px; border-radius: 50%; object-fit: cover;
+      border: 6px solid rgba(255, 255, 255, .12);
+      box-shadow: 0 0 0 1px rgba(245, 201, 138, .6), 0 30px 60px rgba(0, 0, 0, .35);
+    }
+
+    /* Cifras */
+    .cifras { margin-top: -44px; position: relative; }
+    .cifras .contenedor { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .cifra {
+      background: var(--fondo-2); border: 1px solid var(--borde); border-radius: var(--radio);
+      box-shadow: var(--sombra); padding: 20px 20px 18px;
+    }
+    .cifra strong { display: block; font: 700 34px/1 "Fraunces", serif; color: var(--acento); margin-bottom: 8px; }
+    .cifra span { font-size: 14.5px; color: var(--suave); line-height: 1.45; display: block; }
+
+    /* Secciones */
+    section.bloque { padding: 84px 0 0; }
+    .titulo { margin-bottom: 32px; }
+    .titulo h2 { font-size: clamp(30px, 4vw, 40px); margin-top: 10px; }
+    .dos { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; }
+    .dos p { margin: 0 0 16px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; padding: 0; list-style: none; }
+    .chips li {
+      border: 1px solid var(--borde); background: var(--fondo-2); border-radius: 999px;
+      padding: 6px 13px; font-size: 14px;
+    }
+    .subtitulo { font: 600 13px/1 "Inter", sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--suave); margin: 0 0 12px; }
+
+    /* Experiencia */
+    .linea { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--borde); }
+    .linea li { position: relative; padding: 0 0 30px 28px; }
+    .linea li::before {
+      content: ""; position: absolute; left: -7px; top: 7px; width: 12px; height: 12px;
+      border-radius: 50%; background: var(--fondo); border: 2.5px solid var(--acento);
+    }
+    .linea li.actual::before { background: var(--acento); }
+    .linea .cuando { font: 500 13px/1 "JetBrains Mono", monospace; color: var(--suave); }
+    .linea h3 { font-size: 21px; margin: 8px 0 2px; }
+    .linea .donde { font-weight: 600; color: var(--acento); font-size: 15px; }
+    .linea p { margin: 8px 0 0; color: var(--suave); max-width: 70ch; }
+
+    /* Proyectos: un recuadro por proyecto, con una imagen de su repo */
+    .proyectos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .proyecto {
+      background: var(--fondo-2); border: 1px solid var(--borde); border-radius: var(--radio);
+      box-shadow: var(--sombra); overflow: hidden; display: flex; flex-direction: column;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .proyecto:hover { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(43, 68, 104, .06), 0 14px 32px rgba(43, 68, 104, .12); }
+    .imagen-ref { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #eef1f5; border-bottom: 1px solid var(--borde); }
+    .imagen-ref img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .imagen-ref.ajustar { background: #fff; }
+    .imagen-ref.ajustar img { object-fit: contain; object-position: center; padding: 10px; }
+    .imagen-ref.oscura { background: #1d2a40; }
+    .imagen-ref.diagrama { background: #f3f5f8; }
+    .imagen-ref.diagrama svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .dato {
+      position: absolute; left: 12px; bottom: 12px;
+      background: rgba(255, 255, 255, .94); color: var(--acento);
+      font: 700 15px/1 "Fraunces", serif; padding: 7px 11px; border-radius: 999px;
+      box-shadow: 0 2px 8px rgba(43, 68, 104, .18);
+    }
+    .proyecto .cuerpo { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
+    .proyecto h3 { font-size: 19px; margin: 8px 0 8px; }
+    .proyecto p { margin: 0 0 16px; font-size: 15px; color: var(--suave); }
+    .proyecto p b { color: var(--acento); }
+    .enlaces { margin-top: auto; display: flex; flex-wrap: wrap; gap: 8px; }
+    .enlaces a {
+      font-size: 13.5px; font-weight: 600; text-decoration: none; border-radius: 999px;
+      border: 1px solid var(--borde); padding: 6px 12px; color: var(--texto);
+    }
+    .enlaces a:hover { border-color: var(--acento); color: var(--acento); }
+
+    /* Demo y video */
+    .demo { display: grid; grid-template-columns: 1fr 300px; gap: 24px; align-items: start; }
+    .marco {
+      border: 1px solid var(--borde); border-radius: var(--radio); overflow: hidden;
+      box-shadow: var(--sombra); background: var(--fondo-2);
+    }
+    .marco iframe { display: block; width: 100%; height: 560px; border: 0; }
+    .marco video { display: block; width: 100%; aspect-ratio: 9 / 16; background: #000; }
+    .nota { font-size: 14px; color: var(--suave); margin: 10px 2px 0; }
+
+    /* Premios */
+    .premios { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .premio {
+      background: var(--fondo-2); border: 1px solid var(--borde); border-radius: var(--radio);
+      padding: 20px 22px; box-shadow: var(--sombra);
+    }
+    .premio .etiqueta { font-size: 11.5px; }
+    .premio h3 { font-size: 19px; margin: 10px 0 6px; }
+    .premio p { margin: 0; color: var(--suave); font-size: 15px; }
+
+    /* Formación */
+    .formacion { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .formacion div { border-top: 3px solid var(--acento); padding-top: 14px; }
+    .formacion h3 { font-size: 19px; margin: 8px 0 4px; }
+    .formacion p { margin: 0; color: var(--suave); font-size: 15px; }
+
+    /* Contacto */
+    .contacto {
+      margin-top: 96px; background: linear-gradient(160deg, var(--navy), var(--navy-2)); color: #fff;
+      padding: 64px 0 40px; text-align: center;
+    }
+    .contacto h2 { font-size: clamp(30px, 4vw, 42px); margin: 12px 0 14px; }
+    .contacto p { color: #c3cddd; margin: 0 auto 26px; max-width: 52ch; }
+    .contacto .botones, .contacto .redes { justify-content: center; }
+    .pie { margin-top: 44px; font-size: 13.5px; color: #8e9bb3; }
+
+    @media (max-width: 900px) {
+      .menu { display: none; }
+      .controles { margin-left: auto; }
+      .portada { padding: 44px 0 76px; }
+      .portada .contenedor { grid-template-columns: 1fr; gap: 28px; text-align: center; }
+      .portada .contenedor > div:last-child { order: -1; }
+      .foto { width: 190px; height: 190px; margin-inline: auto; }
+      .lema, .portada p.intro { margin-inline: auto; }
+      .botones, .redes { justify-content: center; }
+      .cifras .contenedor { grid-template-columns: repeat(2, 1fr); }
+      .cifra:last-child { grid-column: span 2; }
+      .dos, .demo { grid-template-columns: 1fr; }
+      .proyectos, .premios, .formacion { grid-template-columns: 1fr; }
+      .marco iframe { height: 520px; }
+      .demo .video { max-width: 300px; margin-inline: auto; width: 100%; }
+      section.bloque { padding-top: 64px; }
+    }
+    @media (max-width: 420px) {
+      body { font-size: 16px; }
+      .cifra strong { font-size: 28px; }
+      .cifra { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="barra">
+  <div class="contenedor">
+    <a class="monograma" href="#inicio">J<span>C</span></a>
+    <nav class="menu">
+      <a href="#sobre-mi"><span class="es">Sobre mí</span><span class="en">About</span></a>
+      <a href="#experiencia"><span class="es">Experiencia</span><span class="en">Experience</span></a>
+      <a href="#proyectos"><span class="es">Proyectos</span><span class="en">Projects</span></a>
+      <a href="#demo">Demo</a>
+      <a href="#premios"><span class="es">Premios</span><span class="en">Awards</span></a>
+      <a href="#contacto"><span class="es">Contacto</span><span class="en">Contact</span></a>
+    </nav>
+    <div class="controles">
+      <div class="idiomas" role="group" aria-label="Idioma / Language">
+        <button type="button" data-idioma="es">ES</button>
+        <button type="button" data-idioma="en">EN</button>
+      </div>
+      <button type="button" class="tema" aria-label="Modo claro u oscuro">◐</button>
+    </div>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <section class="portada">
+    <div class="contenedor">
+      <div>
+        <div class="etiqueta">Research Intern · IPA · Lima, <span class="es">Perú</span><span class="en">Peru</span></div>
+        <h1>Jhanela Carhuaz Fuster</h1>
+        <p class="lema es">Economía aplicada, datos e IA <em>para entender la pobreza en el Perú.</em></p>
+        <p class="lema en">Applied economics, data and AI <em>to understand poverty in Peru.</em></p>
+        <p class="intro es">Soy research intern en Innovations for Poverty Action (IPA) y me formé en Economía en la PUCP. Trabajo con datos de panel, inferencia causal, machine learning y agentes de IA, y siempre compruebo que mis cifras cuadren con las oficiales.</p>
+        <p class="intro en">I am a research intern at Innovations for Poverty Action (IPA) and trained in Economics at PUCP. I work with panel data, causal inference, machine learning and AI agents, and I always check that my numbers match the official ones.</p>
+        <div class="botones">
+          <a class="boton principal" href="#proyectos"><span class="es">Ver proyectos</span><span class="en">See projects</span> →</a>
+          <a class="boton secundario" href="files/CV_Jhanela_Carhuaz.pdf" target="_blank" rel="noopener"><span class="es">Descargar CV</span><span class="en">Download CV</span></a>
+        </div>
+        <div class="redes">
+          <a href="https://github.com/Jhane080" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
+          <a href="https://www.linkedin.com/in/jhanela-luz-carhuaz-fuster" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a>
+          <a href="mailto:jhanelacarhuaz@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20a2 2 0 012 2v12a2 2 0 01-2 2H2a2 2 0 01-2-2V6a2 2 0 012-2zm10 8.5L2.5 6.5v1.8L12 14.3l9.5-6V6.5L12 12.5z"/></svg>jhanelacarhuaz@gmail.com</a>
+        </div>
+      </div>
+      <div>
+        <img class="foto" src="images/foto.jpg" alt="Jhanela Carhuaz Fuster">
+      </div>
+    </div>
+  </section>
+
+  <section class="cifras" aria-label="Logros en cifras">
+    <div class="contenedor">
+      <div class="cifra"><strong>11</strong><span class="es">cursos enseñados en Q-LAB PUCP</span><span class="en">courses taught at Q-LAB PUCP</span></div>
+      <div class="cifra"><strong>27.6 %</strong><span class="es">pobreza 2024 replicada igual que el INEI</span><span class="en">2024 poverty rate replicated exactly as INEI</span></div>
+      <div class="cifra"><strong>10/10</strong><span class="es">cifras oficiales correctas con mi servidor MCP</span><span class="en">official figures right with my MCP server</span></div>
+    </div>
+  </section>
+
+  <section class="bloque" id="sobre-mi">
+    <div class="contenedor dos">
+      <div>
+        <div class="titulo">
+          <div class="etiqueta"><span class="es">Sobre mí</span><span class="en">About me</span></div>
+          <h2 class="es">Preguntas sobre pobreza, respondidas con datos</h2>
+          <h2 class="en">Questions about poverty, answered with data</h2>
+        </div>
+        <p class="es">Me interesa entender quién cae en la pobreza, dónde y por qué. Trabajo con encuestas de hogares como la ENAHO, con datos de panel y con datos espaciales, y uso inferencia causal y machine learning para pasar de los datos a respuestas.</p>
+        <p class="en">I want to understand who falls into poverty, where and why. I work with household surveys such as Peru's ENAHO, with panel and spatial data, and I use causal inference and machine learning to get from data to answers.</p>
+        <p class="es">También construyo herramientas de IA para investigar: skills y servidores MCP para Claude que descargan, limpian y validan datos oficiales. Y me gusta enseñar: he dictado 11 cursos de econometría, programación e IA generativa en Q-LAB PUCP.</p>
+        <p class="en">I also build AI tools for research: Claude skills and MCP servers that download, clean and validate official data. And I love teaching: I have taught 11 courses in econometrics, programming and generative AI at Q-LAB PUCP.</p>
+      </div>
+      <div>
+        <p class="subtitulo"><span class="es">Temas</span><span class="en">Topics</span></p>
+        <ul class="chips">
+          <li class="es">Pobreza y bienestar</li><li class="en">Poverty and welfare</li>
+          <li class="es">Econometría de panel</li><li class="en">Panel econometrics</li>
+          <li class="es">Inferencia causal</li><li class="en">Causal inference</li>
+          <li class="es">Datos espaciales</li><li class="en">Spatial data</li>
+          <li class="es">Agentes de IA para investigar</li><li class="en">AI agents for research</li>
+          <li class="es">Medio ambiente</li><li class="en">Environment</li>
+        </ul>
+        <p class="subtitulo"><span class="es">Herramientas</span><span class="en">Tools</span></p>
+        <ul class="chips">
+          <li>Python</li><li>R</li><li>Stata</li><li>Julia</li><li>QGIS</li><li>Git / GitHub</li><li>Claude Code</li><li>D3</li>
+        </ul>
+        <p class="subtitulo"><span class="es">Idiomas</span><span class="en">Languages</span></p>
+        <ul class="chips">
+          <li class="es">Español · nativo</li><li class="en">Spanish · native</li>
+          <li class="es">Inglés · avanzado</li><li class="en">English · advanced</li>
+          <li class="es">Portugués · intermedio</li><li class="en">Portuguese · intermediate</li>
+          <li class="es">Japonés · básico</li><li class="en">Japanese · basic</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque" id="experiencia">
+    <div class="contenedor">
+      <div class="titulo">
+        <div class="etiqueta"><span class="es">Experiencia</span><span class="en">Experience</span></div>
+        <h2 class="es">Dónde he trabajado</h2>
+        <h2 class="en">Where I have worked</h2>
+      </div>
+      <ol class="linea">
+        <li class="actual">
+          <span class="cuando"><span class="es">Actualidad</span><span class="en">Present</span></span>
+          <h3>Research Intern</h3>
+          <div class="donde">Innovations for Poverty Action (IPA)</div>
+        </li>
+        <li>
+          <span class="cuando"><span class="es">ago 2025 – ago 2026</span><span class="en">Aug 2025 – Aug 2026</span></span>
+          <h3><span class="es">Practicante de investigación</span><span class="en">Research Intern</span></h3>
+          <div class="donde">Q-LAB · <span class="es">Facultad de Ciencias Sociales, PUCP</span><span class="en">Faculty of Social Sciences, PUCP</span></div>
+          <p class="es">Un año de prácticas en gestión y análisis de bases de datos, programación web y diseño de programas académicos. Enseñé 11 cursos como jefa de práctica, asistente de docencia e instructora: econometría aplicada avanzada, Python, R, QGIS, LLMs y web scraping. También fui coordinadora académica de la Diplomatura en Ciencia de Datos 2025.</p>
+          <p class="en">A one-year internship in database management and analysis, web programming and academic programme design. I taught 11 courses as teaching fellow, teaching assistant and instructor: advanced applied econometrics, Python, R, QGIS, LLMs and web scraping. I was also academic coordinator of the 2025 Diploma in Data Science.</p>
+        </li>
+        <li>
+          <span class="cuando"><span class="es">2024 – actualidad</span><span class="en">2024 – present</span></span>
+          <h3><span class="es">Asistente de investigación</span><span class="en">Research Assistant</span></h3>
+          <div class="donde">Q-LAB · <span class="es">Facultad de Ciencias Sociales, PUCP</span><span class="en">Faculty of Social Sciences, PUCP</span></div>
+          <p class="es">Movilidad étnica con el Panel ENAHO 2020-2024: análisis de datos y metodología econométrica para datos de panel. Antes, en el proyecto Bumeran (2024-2025), hice web scraping de avisos de empleo para reconstruir los perfiles profesionales más pedidos.</p>
+          <p class="en">Ethnic mobility with the ENAHO Panel 2020-2024: data analysis and econometric methods for panel data. Before that, in the Bumeran project (2024-2025), I scraped job postings to reconstruct the most demanded professional profiles.</p>
+        </li>
+        <li>
+          <span class="cuando">2026</span>
+          <h3><span class="es">Tesis de licenciatura</span><span class="en">Undergraduate thesis</span></h3>
+          <div class="donde"><span class="es">Economía, PUCP</span><span class="en">Economics, PUCP</span></div>
+          <p class="es">Determinantes socioeconómicos del PM2.5 en el Perú: un análisis STIRPAT espacial de la riqueza, la estructura productiva y los efectos territoriales (1998-2019).</p>
+          <p class="en">Socioeconomic determinants of PM2.5 in Peru: a spatial STIRPAT analysis of affluence, productive structure and territorial effects (1998-2019).</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="bloque" id="proyectos">
+    <div class="contenedor">
+      <div class="titulo">
+        <div class="etiqueta"><span class="es">Proyectos</span><span class="en">Projects</span></div>
+        <h2 class="es">Una pregunta, un resultado</h2>
+        <h2 class="en">One question, one result</h2>
+      </div>
+      <div class="proyectos">
+
+        <article class="proyecto">
+          <div class="imagen-ref">
+            <img src="images/repo-pobreza-dashboard.jpg" alt="Captura del dashboard de pobreza por departamento" loading="lazy">
+            <span class="dato">27.6 %</span>
+          </div>
+          <div class="cuerpo">
+            <div class="etiqueta">Python · D3 · ENAHO</div>
+            <h3 class="es">¿La pobreza volvió a su nivel prepandemia?</h3>
+            <h3 class="en">Is poverty back to its pre-pandemic level?</h3>
+            <p class="es">No: pasó de 20.2 % a <b>27.6 %</b> entre 2019 y 2024, con 2.9 millones más de pobres.</p>
+            <p class="en">No: it went from 20.2% to <b>27.6%</b> between 2019 and 2024, 2.9 million more poor people.</p>
+            <div class="enlaces">
+              <a href="https://jhane080.github.io/pobreza-peru-enaho/" target="_blank" rel="noopener">Dashboard</a>
+              <a href="#demo">Reel</a>
+              <a href="https://github.com/Jhane080/pobreza-peru-enaho" target="_blank" rel="noopener"><span class="es">Código</span><span class="en">Code</span></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proyecto">
+          <div class="imagen-ref ajustar">
+            <img src="images/repo-skills-mapa.png" alt="Mapa de pobreza por departamento hecho por las skills" loading="lazy">
+            <span class="dato">= INEI</span>
+          </div>
+          <div class="cuerpo">
+            <div class="etiqueta">Claude Code · Python</div>
+            <h3 class="es">Cuatro skills de Claude para la ENAHO</h3>
+            <h3 class="en">Four Claude skills for the ENAHO</h3>
+            <p class="es">Un agente baja, limpia y mapea la encuesta, y replica la pobreza oficial: <b>27.58 %</b>.</p>
+            <p class="en">An agent downloads, cleans and maps the survey, and replicates official poverty: <b>27.58%</b>.</p>
+            <div class="enlaces">
+              <a href="https://github.com/Jhane080/skills-enaho" target="_blank" rel="noopener"><span class="es">Código</span><span class="en">Code</span></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proyecto">
+          <div class="imagen-ref ajustar">
+            <img src="images/repo-mcp-grafico.png" alt="Gráfico de aciertos de Claude por modo" loading="lazy">
+            <span class="dato">10/10</span>
+          </div>
+          <div class="cuerpo">
+            <div class="etiqueta">MCP · FastMCP · Claude</div>
+            <h3 class="es">¿Claude inventa cifras económicas?</h3>
+            <h3 class="en">Does Claude make up economic figures?</h3>
+            <p class="es">Con mi servidor MCP del BCRP acierta <b>10 de 10</b>; de memoria, 0, pero nunca inventa.</p>
+            <p class="en">With my BCRP MCP server it gets <b>10 of 10</b>; from memory, 0, but it never makes one up.</p>
+            <div class="enlaces">
+              <a href="https://github.com/Jhane080/mcp-bcrp/blob/main/informe.md" target="_blank" rel="noopener"><span class="es">Informe</span><span class="en">Report</span></a>
+              <a href="https://github.com/Jhane080/mcp-bcrp" target="_blank" rel="noopener"><span class="es">Código</span><span class="en">Code</span></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proyecto">
+          <div class="imagen-ref ajustar oscura">
+            <img src="images/repo-incendios-dnbr.jpg" alt="Imágenes Sentinel-2 antes y después del incendio de Limatambo" loading="lazy">
+            <span class="dato">330 ha</span>
+          </div>
+          <div class="cuerpo">
+            <div class="etiqueta">Python · Sentinel-2 · <span class="es">Clima</span><span class="en">Weather</span></div>
+            <h3 class="es">¿Qué incendios de Cusco pueden crecer?</h3>
+            <h3 class="en">Which Cusco wildfires could grow?</h3>
+            <p class="es">Crucé focos de calor con el pronóstico: Limatambo era el de mayor riesgo y ya quemó <b>330 ha</b>.</p>
+            <p class="en">I crossed fire hotspots with the forecast: Limatambo had the highest risk and had burned <b>330 ha</b>.</p>
+            <div class="enlaces">
+              <a href="https://github.com/Jhane080/incendios-cusco" target="_blank" rel="noopener"><span class="es">Código</span><span class="en">Code</span></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proyecto">
+          <div class="imagen-ref ajustar oscura">
+            <img src="images/repo-reel-inflacion.png" alt="Portada del reel del Reporte de Inflación" loading="lazy">
+            <span class="dato">44 s</span>
+          </div>
+          <div class="cuerpo">
+            <div class="etiqueta">Qwen3-TTS · Whisper · ffmpeg</div>
+            <h3 class="es">La inflación del BCRP en un reel</h3>
+            <h3 class="en">BCRP inflation in a reel</h3>
+            <p class="es">El Reporte de Inflación en <b>44 segundos</b>, narrado con mi voz clonada con IA.</p>
+            <p class="en">The Inflation Report in <b>44 seconds</b>, narrated with my AI-cloned voice.</p>
+            <div class="enlaces">
+              <a href="https://github.com/Jhane080/reel-reporte-inflacion-bcrp/blob/main/salidas/reel.mp4" target="_blank" rel="noopener">Reel</a>
+              <a href="https://github.com/Jhane080/reel-reporte-inflacion-bcrp" target="_blank" rel="noopener"><span class="es">Código</span><span class="en">Code</span></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proyecto">
+          <div class="imagen-ref ajustar">
+            <img src="images/repo-titulares-f1.png" alt="Gráfico del F1 de cada modelo del clasificador" loading="lazy">
+            <span class="dato">F1 0.84</span>
+          </div>
+          <div class="cuerpo">
+            <div class="etiqueta">DistilBERT · LLM</div>
+            <h3 class="es">Un clasificador de titulares</h3>
+            <h3 class="en">A headline classifier</h3>
+            <p class="es">Un Transformer ligero ordena 383 noticias de El Comercio en cuatro temas con <b>F1 de 0.84</b>.</p>
+            <p class="en">A light Transformer sorts 383 El Comercio stories into four topics with an <b>F1 of 0.84</b>.</p>
+            <div class="enlaces">
+              <a href="https://github.com/Jhane080/Noticias-peruanas/tree/main/tarea_1" target="_blank" rel="noopener"><span class="es">Código</span><span class="en">Code</span></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proyecto">
+          <div class="imagen-ref ajustar">
+            <img src="images/repo-audio-onda.png" alt="Forma de onda de una entrevista transcrita" loading="lazy">
+            <span class="dato">OCR</span>
+          </div>
+          <div class="cuerpo">
+            <div class="etiqueta">PaddleOCR · Whisper · Streamlit</div>
+            <h3 class="es">Del archivo escaneado al texto</h3>
+            <h3 class="en">From scanned archives to text</h3>
+            <p class="es">Documentos y entrevistas del Perú pasan a texto buscable con solo <b>5.6 %</b> de error en impresos.</p>
+            <p class="en">Peruvian documents and interviews become searchable text with just <b>5.6%</b> error in print.</p>
+            <div class="enlaces">
+              <a href="https://voces-documentos-jhanela.streamlit.app/" target="_blank" rel="noopener">Dashboard</a>
+              <a href="https://github.com/Jhane080/Noticias-peruanas/tree/main/tarea_2" target="_blank" rel="noopener"><span class="es">Código</span><span class="en">Code</span></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proyecto">
+          <div class="imagen-ref diagrama">
+            <svg viewBox="0 0 400 250" role="img" aria-label="Flujo de Research Copilot: PDFs, fragmentos, ChromaDB, GPT-4 y respuesta con citas">
+              <g font-family="JetBrains Mono, monospace" font-size="12" text-anchor="middle">
+                <rect x="20" y="30" width="105" height="44" rx="10" fill="#fff" stroke="#c9d3e0"/><text x="72" y="57" fill="#2a3242">20 PDFs</text>
+                <rect x="148" y="30" width="105" height="44" rx="10" fill="#fff" stroke="#c9d3e0"/><text x="200" y="57" fill="#2a3242">chunks</text>
+                <rect x="276" y="30" width="105" height="44" rx="10" fill="#fff" stroke="#c9d3e0"/><text x="328" y="57" fill="#2a3242">embeddings</text>
+                <rect x="276" y="120" width="105" height="44" rx="10" fill="#4b6b92"/><text x="328" y="147" fill="#fff">ChromaDB</text>
+                <rect x="148" y="120" width="105" height="44" rx="10" fill="#a5623d"/><text x="200" y="147" fill="#fff">GPT-4</text>
+                <rect x="20" y="120" width="105" height="44" rx="10" fill="#fff" stroke="#c9d3e0"/><text x="72" y="140" fill="#2a3242">respuesta</text><text x="72" y="155" fill="#2a3242">+ citas</text>
+                <text x="200" y="215" fill="#5f6979" font-size="11">pregunta → buscar → responder</text>
+              </g>
+              <g stroke="#8a97ab" stroke-width="1.6" fill="none" marker-end="url(#flecha)">
+                <path d="M125 52h20"/><path d="M253 52h20"/><path d="M328 74v43"/><path d="M276 142h-20"/><path d="M148 142h-20"/>
+              </g>
+              <defs><marker id="flecha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8a97ab"/></marker></defs>
+            </svg>
+            <span class="dato">RAG</span>
+          </div>
+          <div class="cuerpo">
+            <div class="etiqueta">Python · ChromaDB · GPT-4</div>
+            <h3>Research Copilot</h3>
+            <p class="es">Pregúntale a <b>20 papers</b> clave de IA y te responde con citas.</p>
+            <p class="en">Ask <b>20 key AI papers</b> a question and get an answer with citations.</p>
+            <div class="enlaces">
+              <a href="https://github.com/Jhane080/research-copilot" target="_blank" rel="noopener"><span class="es">Código</span><span class="en">Code</span></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proyecto">
+          <div class="imagen-ref oscura">
+            <img src="images/repo-organizador.jpg" alt="Captura de la app Mi Organizador" loading="lazy">
+            <span class="dato">App</span>
+          </div>
+          <div class="cuerpo">
+            <div class="etiqueta">JavaScript · Electron</div>
+            <h3>Mi Organizador</h3>
+            <p class="es">App de escritorio para tareas, agenda, objetivos y emociones, pensada en el <b>bienestar</b> estudiantil.</p>
+            <p class="en">Desktop app for tasks, schedule, goals and emotions, built around student <b>wellbeing</b>.</p>
+            <div class="enlaces">
+              <a href="https://github.com/Jhane080/mi-organizador" target="_blank" rel="noopener"><span class="es">Código</span><span class="en">Code</span></a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque" id="demo">
+    <div class="contenedor">
+      <div class="titulo">
+        <div class="etiqueta">Demo</div>
+        <h2 class="es">Pruébalo: el dashboard y el reel</h2>
+        <h2 class="en">Try it: the dashboard and the reel</h2>
+      </div>
+      <div class="demo">
+        <div>
+          <div class="marco">
+            <iframe src="https://jhane080.github.io/pobreza-peru-enaho/" title="Dashboard de pobreza en el Perú 2019-2024" loading="lazy"></iframe>
+          </div>
+          <p class="nota es">Dashboard interactivo: elige año, indicador y departamento. <a href="https://jhane080.github.io/pobreza-peru-enaho/" target="_blank" rel="noopener">Abrir en otra pestaña</a>.</p>
+          <p class="nota en">Interactive dashboard: pick a year, indicator and department. <a href="https://jhane080.github.io/pobreza-peru-enaho/" target="_blank" rel="noopener">Open in a new tab</a>.</p>
+        </div>
+        <div class="video">
+          <div class="marco">
+            <video controls preload="none" playsinline poster="images/reel-portada.png">
+              <source src="videos/reel.mp4" type="video/mp4">
+            </video>
+          </div>
+          <p class="nota es">Reel de 59 s. La narración es mi voz clonada con IA (Qwen3-TTS).</p>
+          <p class="nota en">59-second reel. The narration is my own voice, cloned with AI (Qwen3-TTS).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque" id="premios">
+    <div class="contenedor">
+      <div class="titulo">
+        <div class="etiqueta"><span class="es">Premios y becas</span><span class="en">Awards and scholarships</span></div>
+        <h2 class="es">Reconocimientos</h2>
+        <h2 class="en">Recognition</h2>
+      </div>
+      <div class="premios">
+        <div class="premio">
+          <div class="etiqueta">Top 1 · 2025</div>
+          <h3 class="es">Primer puesto en tres cursos</h3>
+          <h3 class="en">First place in three courses</h3>
+          <p class="es">Seminario de Investigación, Laboratorio de R y Python, y Stata para Bases de Datos (PUCP).</p>
+          <p class="en">Research Seminar, R &amp; Python Lab, and Stata for Databases (PUCP).</p>
+        </div>
+        <div class="premio">
+          <div class="etiqueta">Top 2 · Top 3</div>
+          <h3 class="es">Econometría y estadística</h3>
+          <h3 class="en">Econometrics and statistics</h3>
+          <p class="es">Top 2 en Econometría Intermedia. Top 3 en Estadística y en Tópicos de Economía Matemática y Computacional.</p>
+          <p class="en">Top 2 in Intermediate Econometrics. Top 3 in Statistics and in Topics in Mathematical and Computational Economics.</p>
+        </div>
+        <div class="premio">
+          <div class="etiqueta"><span class="es">Ganadora · 2025</span><span class="en">Winner · 2025</span></div>
+          <h3>Fondo RSU PUCP</h3>
+          <p class="es">Coordiné «Papel con Propósito», un programa de reciclaje en el campus con un sistema digital para registrar y premiar el reciclaje.</p>
+          <p class="en">I coordinated "Papel con Propósito", a campus recycling programme with a digital system to record and rank recycling.</p>
+        </div>
+        <div class="premio">
+          <div class="etiqueta"><span class="es">Becas completas</span><span class="en">Full scholarships</span></div>
+          <h3>Winter School · OMLATAM</h3>
+          <p class="es">Winter School de Q-LAB PUCP 2025 y 2026, y OMLATAM Fellowship 2025 en liderazgo social e innovación sostenible.</p>
+          <p class="en">Q-LAB PUCP Winter School 2025 and 2026, and the OMLATAM Fellowship 2025 in social leadership and sustainable innovation.</p>
+        </div>
+        <div class="premio">
+          <div class="etiqueta"><span class="es">Media beca · 2026</span><span class="en">Half scholarship · 2026</span></div>
+          <h3 class="es">Diplomatura en Ciencia de Datos</h3>
+          <h3 class="en">Diploma in Data Science</h3>
+          <p class="es">Ciencia de Datos para las Ciencias Sociales y la Gestión Pública, Q-LAB PUCP (2026-2027).</p>
+          <p class="en">Data Science for the Social Sciences and Public Management, Q-LAB PUCP (2026-2027).</p>
+        </div>
+        <div class="premio">
+          <div class="etiqueta"><span class="es">3.er puesto · 2024</span><span class="en">3rd place · 2024</span></div>
+          <h3 class="es">Proyectos sostenibles</h3>
+          <h3 class="en">Sustainable projects</h3>
+          <p class="es">Taller de Diseño y Formulación de Proyectos con Enfoque de Sostenibilidad, Centro SEED PUCP (en equipo).</p>
+          <p class="en">Workshop on Designing Projects with a Sustainability Focus, PUCP SEED Center (team).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque" id="formacion">
+    <div class="contenedor">
+      <div class="titulo">
+        <div class="etiqueta"><span class="es">Formación</span><span class="en">Education</span></div>
+        <h2 class="es">Dónde aprendí</h2>
+        <h2 class="en">Where I studied</h2>
+      </div>
+      <div class="formacion">
+        <div>
+          <span class="etiqueta">2020 – 2026</span>
+          <h3 class="es">Economía</h3><h3 class="en">Economics</h3>
+          <p>Pontificia Universidad Católica del Perú (PUCP)</p>
+        </div>
+        <div>
+          <span class="etiqueta">2026 – 2027</span>
+          <h3 class="es">Diplomatura en Ciencia de Datos</h3><h3 class="en">Diploma in Data Science</h3>
+          <p>Q-LAB PUCP</p>
+        </div>
+        <div>
+          <span class="etiqueta">2025</span>
+          <h3>OMLATAM Fellowship</h3>
+          <p>One Million Leaders LATAM</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="contacto" id="contacto">
+  <div class="contenedor">
+    <div class="etiqueta" style="color: var(--ambar)"><span class="es">Contacto</span><span class="en">Contact</span></div>
+    <h2 class="es">¿Conversamos?</h2>
+    <h2 class="en">Let's talk</h2>
+    <p class="es">Si trabajas en pobreza, políticas públicas o datos y crees que podemos colaborar, escríbeme.</p>
+    <p class="en">If you work on poverty, public policy or data and think we could work together, write to me.</p>
+    <div class="botones">
+      <a class="boton principal" href="mailto:jhanelacarhuaz@gmail.com"><span class="es">Escríbeme</span><span class="en">Email me</span></a>
+      <a class="boton secundario" href="files/CV_Jhanela_Carhuaz.pdf" target="_blank" rel="noopener"><span class="es">Descargar CV</span><span class="en">Download CV</span></a>
+    </div>
+    <div class="redes">
+      <a href="https://github.com/Jhane080" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/jhanela-luz-carhuaz-fuster" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:jhanelacarhuaz@gmail.com">jhanelacarhuaz@gmail.com</a>
+    </div>
+    <p class="pie">© 2026 Jhanela Carhuaz Fuster · <span class="es">Hecho con HTML, CSS y Claude Code, publicado en GitHub Pages.</span><span class="en">Built with HTML, CSS and Claude Code, published on GitHub Pages.</span></p>
+  </div>
+</footer>
+
+<script>
+  var raiz = document.documentElement;
+
+  function ponerIdioma(idioma) {
+    raiz.lang = idioma;
+    document.title = idioma === "es" ? "Jhanela Carhuaz Fuster · Portafolio" : "Jhanela Carhuaz Fuster · Portfolio";
+    try { localStorage.setItem("idioma", idioma); } catch (e) {}
+  }
+  ponerIdioma(raiz.lang);
+
+  var botonesIdioma = document.querySelectorAll("[data-idioma]");
+  for (var i = 0; i < botonesIdioma.length; i++) {
+    botonesIdioma[i].addEventListener("click", function () {
+      ponerIdioma(this.getAttribute("data-idioma"));
+    });
+  }
+
+  document.querySelector(".tema").addEventListener("click", function () {
+    var oscuroAhora = raiz.getAttribute("data-theme") === "dark" ||
+      (!raiz.getAttribute("data-theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    var nuevo = oscuroAhora ? "light" : "dark";
+    raiz.setAttribute("data-theme", nuevo);
+    try { localStorage.setItem("tema", nuevo); } catch (e) {}
+  });
+</script>
+</body>
+</html>
